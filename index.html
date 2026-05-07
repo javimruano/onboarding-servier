@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servier Oncohematología — Onboarding Product Manager</title>
+  <style>:root {
+  --accent: #2e2a7b;
+  --accent-2: #f25c43;
+  --accent-soft: rgba(46, 42, 123, 0.08);
+  --timeline-ln: linear-gradient(to bottom, transparent 0%, #b8b3e8 15%, #b8b3e8 85%, transparent 100%);
+  --timeline-border: #ffffff;
+  --bg-card: #ffffff;
+  --bg-hover: #f7f7fb;
+  --bg-soft: #f4f4f7;
+  --text-title: #2d2d38;
+  --text-accent: var(--accent);
+  --text-sub: #55556a;
+  --radius: 10px;
+  --border: #e7e7ef;
+  --shadow: 0 8px 24px rgba(28, 28, 50, 0.06);
+  --hover-shadow: 0 12px 30px rgba(28, 28, 50, 0.1);
+  --font: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+  --overflow-wrap: break-word;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #8b86d9;
+    --accent-2: #ff7b63;
+    --accent-soft: rgba(139, 134, 217, 0.12);
+    --timeline-ln: linear-gradient(to bottom, transparent 0%, transparent 3%, #6b67aa 30%, #6b67aa 50%, transparent 97%, transparent 100%);
+    --timeline-border: #2b2b35;
+    --bg-card: #191922;
+    --bg-hover: #232330;
+    --bg-soft: #12121a;
+    --text-title: #f5f5fb;
+    --text-sub: #d6d6e5;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+    --hover-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    --border: #343447;
+  }
+}
+
+@media (prefers-contrast: more), (forced-colors: active) {
+  :root {
+    --accent: ActiveText;
+    --accent-2: Highlight;
+    --timeline-ln: ActiveText;
+    --timeline-border: Canvas;
+    --bg-card: Canvas;
+    --bg-hover: Canvas;
+    --bg-soft: Canvas;
+    --text-title: CanvasText;
+    --text-sub: CanvasText;
+    --shadow: 0 0 0 Canvas;
+    --hover-shadow: 0 0 0 Canvas;
+    --border: ButtonBorder;
+  }
+}
+
+.insights-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 16px;
+  padding: 0 16px;
+  font-family: var(--font);
+}
+
+.metrics-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(210px, 1fr));
+  gap: 16px;
+  padding: 0 16px;
+  font-family: var(--font);
+}
+
+@media (max-width: 600px) {
+  .metrics-container,
+  .insights-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.insight-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.insight-card:hover {
+  background-color: var(--bg-hover);
+  box-shadow: var(--hover-shadow);
+  transform: translateY(-1px);
+}
+
+.insight-card h4 {
+  font-size: 1.02rem;
+  color: var(--text-accent);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0 0 8px;
+}
+
+.insight-card p {
+  font-size: 0.94rem;
+  color: var(--text-sub);
+  line-height: 1.58;
+  margin: 0;
+  overflow-wrap: var(--overflow-wrap);
+}
+
+.metric-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding: 18px;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.metric-card:hover {
+  background-color: var(--bg-hover);
+  box-shadow: var(--hover-shadow);
+  transform: translateY(-1px);
+}
+
+.metric-card h4 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--text-title);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metric-card .metric-card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-accent);
+  margin: 8px 0 6px;
+}
+
+.metric-card p {
+  font-size: 0.87rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+  margin: 0;
+  overflow-wrap: var(--overflow-wrap);
+}
+
+.timeline-container {
+  position: relative;
+  padding: 0 16px 0 56px;
+  list-style: none;
+  font-family: var(--font);
+  margin: 24px 0;
+}
+
+.timeline-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 28px;
+  width: 2px;
+  height: 100%;
+  background: var(--timeline-ln);
+}
+
+.timeline-container > li {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+.timeline-container > li::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -28px;
+  width: 14px;
+  height: 14px;
+  background: var(--accent-2);
+  border: var(--timeline-border) 2px solid;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-container h4 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.timeline-container p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--text-sub);
+  line-height: 1.55;
+}
+
+.alert {
+  background: linear-gradient(90deg, rgba(242,92,67,0.08), rgba(46,42,123,0.04));
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-2);
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  margin: 16px 0;
+  box-shadow: var(--shadow);
+  color: var(--text-sub);
+}
+
+body {
+  margin: 0;
+  background: var(--bg-soft);
+  color: var(--text-title);
+  font-family: var(--font);
+}
+
+.topbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 18px 24px 14px;
+}
+
+.brandline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.logo-mark {
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.logo-mark span {
+  color: var(--accent-2);
+  font-size: 1.2rem;
+  vertical-align: top;
+}
+
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+}
+
+.topnav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  position: relative;
+}
+
+.topnav a::before {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 18px;
+  background: var(--accent);
+  margin-right: 12px;
+  vertical-align: middle;
+  opacity: 0.35;
+}
+
+.topnav a:first-child::before {
+  display: none;
+}
+
+.subbar {
+  background: var(--accent-2);
+  color: white;
+}
+
+.subbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.subbar-links {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.subbar-links span {
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 26px 18px 56px;
+}
+
+.hero {
+  position: relative;
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+  min-height: 430px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+  background:
+    linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.08)),
+    linear-gradient(135deg, rgba(46,42,123,0.18), rgba(46,42,123,0.02)),
+    url('/mnt/data/5dfd7ff4-37f1-41bc-9304-3546eb3257e3.png') center/cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.hero-box {
+  width: min(820px, 88%);
+  background: rgba(46, 42, 123, 0.62);
+  color: white;
+  padding: 34px 36px;
+  text-align: center;
+}
+
+.hero-box .eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.hero-box h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.08;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: white;
+}
+
+.hero-box p {
+  margin: 16px auto 0;
+  max-width: 680px;
+  line-height: 1.65;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.94);
+}
+
+.hero-cta {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 12px 24px;
+  border: 2px solid rgba(255,255,255,0.75);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.panel h3, section h2 {
+  margin-top: 0;
+}
+
+section {
+  margin-top: 30px;
+}
+
+section h2 {
+  font-size: 1.55rem;
+  margin-bottom: 14px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.lead {
+  color: var(--text-sub);
+  line-height: 1.72;
+  margin-bottom: 18px;
+  font-size: 0.98rem;
+}
+
+.hero-grid,
+.split,
+.double-grid,
+.three-grid,
+.brand-grid,
+.mini-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.hero-grid { grid-template-columns: 1.35fr 0.9fr; }
+.split { grid-template-columns: 1fr 1fr; }
+.double-grid { grid-template-columns: 1fr 1fr; }
+.three-grid { grid-template-columns: repeat(3, 1fr); }
+.brand-grid { grid-template-columns: repeat(2, minmax(300px, 1fr)); }
+.mini-grid { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .split,
+  .double-grid,
+  .three-grid,
+  .brand-grid,
+  .mini-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hero {
+    min-height: 360px;
+  }
+  .hero-box {
+    width: 92%;
+    padding: 24px;
+  }
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 7px 10px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 999px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 1.06rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.card p, .card li {
+  color: var(--text-sub);
+  line-height: 1.62;
+  font-size: 0.95rem;
+}
+
+.card ul {
+  margin: 10px 0 0 18px;
+  padding: 0;
+}
+
+.kpi-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.kpi-pill {
+  flex: 1 1 140px;
+  min-width: 130px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: var(--shadow);
+}
+
+.kpi-pill strong {
+  display: block;
+  color: var(--accent);
+  font-size: 1.04rem;
+  text-transform: uppercase;
+}
+
+.kpi-pill span {
+  font-size: 0.84rem;
+  color: var(--text-sub);
+}
+
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.matrix-table th,
+.matrix-table td {
+  text-align: left;
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  font-size: 0.93rem;
+}
+
+.matrix-table th {
+  background: rgba(46,42,123,0.06);
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.matrix-table td {
+  color: var(--text-sub);
+}
+
+.matrix-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.progress-container {
+  margin-top: 12px;
+}
+
+.progress-container p {
+  margin: 0 0 8px;
+  color: var(--text-sub);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(46,42,123,0.1);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.circle-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+}
+
+.circle-box {
+  text-align: center;
+}
+
+.circle-chart {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 8px;
+  font-weight: 700;
+  color: var(--accent);
+  background: radial-gradient(circle at center, var(--bg-card) 53%, transparent 54%), conic-gradient(var(--accent) 0 var(--pct), rgba(46,42,123,0.12) var(--pct) 100%);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.bar-chart {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  height: 220px;
+  padding: 18px 12px 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.bar-item {
+  flex: 1;
+  min-width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 8px;
+}
+
+.bar {
+  width: 100%;
+  max-width: 72px;
+  border-radius: 10px 10px 4px 4px;
+  background: linear-gradient(180deg, var(--accent), #5f58b6);
+}
+
+.bar-label,
+.bar-value {
+  font-size: 0.83rem;
+  text-align: center;
+  color: var(--text-sub);
+}
+
+.bar-value {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+details {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+details p {
+  color: var(--text-sub);
+  line-height: 1.62;
+}
+
+.quote-box {
+  border-left: 4px solid var(--accent-2);
+  padding: 14px 16px;
+  background: linear-gradient(90deg, rgba(46,42,123,0.04), rgba(255,255,255,0.8));
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow);
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+
+.study-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 14px;
+}
+
+.study-tag {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(46,42,123,0.08);
+  color: var(--accent);
+  border: 1px solid rgba(46,42,123,0.12);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.study-link {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--accent-2);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.study-link:hover {
+  text-decoration: underline;
+}
+
+.footer-note {
+  margin-top: 24px;
+  color: var(--text-sub);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brandline">
+        <div class="logo-mark">SERVIER<span>*</span></div>
+        <nav class="topnav" aria-label="Navegación principal inspirada en Servier">
+          <a href="#empresa">Nuestra compañía</a>
+          <a href="#hematologia">Área de hematología</a>
+          <a href="#jobdescription">El rol</a>
+          <a href="#portfolio">Nuestros productos</a>
+          <a href="#competencia">Competencia</a>
+          <a href="#estudios-clinicos">Ensayos clínicos</a>
+          <a href="#plan-306090">Plan 30-60-90</a>
+          <a href="#cierre">Conclusiones</a>
+        </nav>
+      </div>
+    </div>
+    <div class="subbar">
+      <div class="subbar-inner">
+        <div class="subbar-links">
+          <span><a href="#estudio-agile" style="color:white; text-decoration:none;">Tibsovo — AGILE</a></span>
+          <span><a href="#estudio-ag120" style="color:white; text-decoration:none;">Tibsovo — AG120-C-001</a></span>
+          <span><a href="#estudio-oncaspar" style="color:white; text-decoration:none;">Oncaspar — evidencia clave</a></span>
+        </div>
+        <div class="subbar-links">
+          <span><a href="#estudios-clinicos" style="color:white; text-decoration:none;">Ver todos los ensayos</a></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrapper">
+    <section class="hero">
+      <div class="hero-overlay">
+        <div class="hero-box">
+          <p class="eyebrow">Guía de onboarding</p>
+          <h1>Product Manager Oncohematología</h1>
+          <p>Documento de contexto para facilitar la incorporación al rol: visión de Servier, franquicia hematológica, Tibsovo, Oncaspar, competencia, paciente ideal y principales prioridades para operar con un enfoque estratégico y muy conectado al mercado hospitalario español.</p>
+          <a class="hero-cta" href="#empresa">Más información sobre el grupo Servier →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="empresa">
+      <h2>1. Servier: contexto empresarial y por qué importa para el rol</h2>
+      <p class="lead">Antes de hablar de productos, conviene entender <strong>qué tipo de compañía es Servier</strong>, cómo ha evolucionado y por qué la oncología tiene hoy un peso tan relevante dentro del grupo.</p>
+      <div class="metrics-container">
+        <div class="metric-card">
+          <h4>Ingresos grupo</h4>
+          <p class="metric-card-value">€6,9Bn</p>
+          <p>Escala global alcanzada en FY 2024/25, con crecimiento impulsado por expansión internacional y fuerte tracción en oncología.</p>
+        </div>
+        <div class="metric-card">
+          <h4>Oncología sobre ventas</h4>
+          <p class="metric-card-value">32,2%</p>
+          <p>La oncología ya representa cerca de un tercio del negocio del grupo y se consolida como motor estratégico de crecimiento.</p>
+        </div>
+        <div class="metric-card">
+          <h4>Ventas de oncología</h4>
+          <p class="metric-card-value">€2,21Bn</p>
+          <p>Crecimiento muy fuerte del área, reforzando la idea de que Servier se ha transformado hacia un modelo mucho más orientado a innovación oncológica.</p>
+        </div>
+        <div class="metric-card">
+          <h4>Proyectos de I+D</h4>
+          <p class="metric-card-value">62</p>
+          <p>Pipeline amplio, con gran concentración en oncología y una apuesta clara por terapias dirigidas y enfermedades de alta necesidad médica no cubierta.</p>
+        </div>
+      </div>
+      <div class="split" style="margin-top:18px;">
+        <div class="card">
+          <h3>Qué debe interiorizar el Product Manager</h3>
+          <ul>
+            <li>Que Servier no es una big pharma generalista clásica, sino una compañía con <strong>foco estratégico selectivo</strong>.</li>
+            <li>Que la oncología no es un área periférica: es una de las grandes palancas de crecimiento del grupo.</li>
+            <li>Que la empresa está construyendo valor en <strong>rare cancers, medicina de precisión y targeted therapies</strong>.</li>
+            <li>Que el rol de Product Manager tiene sentido porque el portfolio necesita marketing fino, no masivo.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Cómo aterrizarlo en el rol</h3>
+          <p>Servier está en una fase de transformación muy clara: la oncología ya pesa de forma material en el negocio del grupo y además lo hace con un enfoque muy definido en tumores raros, poblaciones genéticamente segmentadas y terapias con alto valor añadido. Esto exige un Product Manager capaz de traducir ciencia, mercado y ejecución en decisiones muy focalizadas.</p>
+          <div class="progress-container">
+            <p><strong>Peso orientativo de la oncología dentro del grupo</strong></p>
+            <div class="progress-bar"><div class="progress-fill" style="width:32.2%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="alert"><strong>Idea clave:</strong> aunque Servier no tenga el mayor portfolio de hematología del mercado, sí tiene una estrategia muy clara: construir una franquicia más focalizada, más precisa y más defendible científicamente.</div>
+    </section>
+
+    <section id="hematologia">
+      <h2>2. Área de hematología: enfermedades foco, nichos y mecanismos de acción</h2>
+      <p class="lead">La hematología de Servier gira en torno a <strong>subgrupos bien definidos</strong> de enfermedad. Eso cambia por completo el tipo de marketing que necesita la marca: menos awareness general, más comprensión de <strong>qué paciente</strong>, <strong>qué centro</strong> y <strong>qué biomarcador o pathway</strong> activa la oportunidad.</p>
+      <div class="three-grid">
+        <div class="card">
+          <h3>AML / LMA con mutación IDH1</h3>
+          <p><strong>Enfermedad foco:</strong> leucemia mieloide aguda de nuevo diagnóstico en pacientes no candidatos a inducción estándar, siempre que exista mutación <strong>IDH1 R132</strong>.</p>
+          <p><strong>Mecanismo de acción:</strong> ivosidenib inhibe la enzima IDH1 mutada, reduce la producción del oncometabolito 2-HG y favorece la diferenciación celular. Es el ejemplo más claro de medicina de precisión dentro de la franquicia.</p>
+          <p><strong>Posicionamiento regulatorio útil para el rol:</strong> Tibsovo + azacitidina es la terapia específicamente orientada al subgrupo <strong>IDH1 R132 mutado</strong> en LMA de nuevo diagnóstico no candidata a quimioterapia intensiva. Eso refuerza que el testing molecular no es un accesorio comercial, sino el verdadero punto de activación del mercado.</p>
+        </div>
+        <div class="card">
+          <h3>ALL / LLA</h3>
+          <p><strong>Enfermedad foco:</strong> leucemia linfoblástica aguda, tanto en pediatría como en adultos, dentro de esquemas combinados.</p>
+          <p><strong>Mecanismo de acción:</strong> pegaspargasa agota la asparagina circulante, un aminoácido del que dependen especialmente las células leucémicas. Aquí el valor se apoya más en backbone terapéutico y experiencia clínica que en selección molecular.</p>
+        </div>
+        <div class="card">
+          <h3>Leucemias agudas molecularmente definidas</h3>
+          <p><strong>Pipeline foco:</strong> AML y otras leucemias agudas con alteraciones concretas como <strong>KMT2A</strong> o <strong>NPM1</strong>.</p>
+          <p><strong>Mecanismo de acción:</strong> los menin inhibitors buscan bloquear una diana crítica para determinados subgrupos de leucemias agudas, reforzando la lógica de precisión y la ambición de Servier en hematología.</p>
+        </div>
+      </div>
+      <div class="metrics-container" style="margin-top:18px;">
+        <div class="metric-card">
+          <h4>Foco científico</h4>
+          <p class="metric-card-value">Selectivo</p>
+          <p>La compañía prioriza nichos biológicamente definidos antes que amplitud indiscriminada de portfolio.</p>
+        </div>
+        <div class="metric-card">
+          <h4>Tipo de marketing</h4>
+          <p class="metric-card-value">De precisión</p>
+          <p>Más peso del diagnóstico, la segmentación de centros y el algoritmo terapéutico real.</p>
+        </div>
+        <div class="metric-card">
+          <h4>Complejidad del entorno</h4>
+          <p class="metric-card-value">Alta</p>
+          <p>Pocos pacientes, pocos centros decisores y elevada necesidad de coordinación cross-functional.</p>
+        </div>
+        <div class="metric-card">
+          <h4>Franquicia hematológica</h4>
+          <p class="metric-card-value">Coherente</p>
+          <p>IDH1 hoy, ALL consolidada y leucemias agudas molecularmente definidas como vía de expansión futura.</p>
+        </div>
+      </div>
+      <div class="alert"><strong>Mensaje útil:</strong> la hematología de Servier resulta especialmente interesante porque no está construida alrededor de volumen indiscriminado, sino alrededor de nichos con lógica biológica muy clara.</div>
+    </section>
+
+    <section id="jobdescription">
+      <h2>3. Lectura estratégica del rol</h2>
+      <p class="lead">La descripción del puesto sugiere un perfil que combine <strong>marketing hospitalario</strong>, comprensión científica suficiente para construir mensajes sólidos, orientación a ejecución y una gran capacidad para aterrizar el discurso global al mercado español.</p>
+      <div class="insights-container">
+        <div class="insight-card">
+          <h4>🎯 Actividades promocionales</h4>
+          <p>No basta con “adaptar materiales”. El rol pide diseñar mensajes de venta, orientar la marca, apoyar lanzamientos, crear materiales HCP y convertir la ciencia en argumentos comerciales rigurosos.</p>
+        </div>
+        <div class="insight-card">
+          <h4>📊 Administración y forecast</h4>
+          <p>Hay una expectativa clara de ownership: presupuesto, métricas de campaña, apoyo a presentaciones internas y trabajo con sales effectiveness para pronóstico de ingresos y unidades.</p>
+        </div>
+        <div class="insight-card">
+          <h4>🧠 Panorama competitivo</h4>
+          <p>La empresa quiere a alguien capaz de detectar cambios del mercado antes de que aparezcan en los números: competidores, hábitos de prescripción, barreras de acceso, testing, pathways y necesidades de campo.</p>
+        </div>
+        <div class="insight-card">
+          <h4>🤝 Colaboración regional-global</h4>
+          <p>El puesto tiene una dimensión “bisagra”: representar la voz de España frente a global, a la vez que traduce iniciativas internacionales a la realidad local de centros, KOLs y equipos de ventas.</p>
+        </div>
+      </div>
+      <div class="alert"><strong>Lectura clave del rol:</strong> la posición no es solo marketing. Es una función que entiende el negocio hospitalario, estructura la narrativa de la marca, aterriza insights del terreno y convierte todo eso en ejecución medible.</div>
+    </section>
+
+    <section id="portfolio-relevante">
+      <h2>4. Portfolio hematológico relevante de Servier</h2>
+      <p class="lead">En hematología, Servier no juega a tener el portfolio más amplio, sino uno <strong>más focalizado y coherente</strong>, basado en nichos con alta necesidad médica y fuerte racional científico.</p>
+      <div class="brand-grid">
+        <div class="card">
+          <h3>Tibsovo (ivosidenib)</h3>
+          <p><strong>Espacio terapéutico:</strong> leucemia mieloide aguda con mutación IDH1.</p>
+          <ul>
+            <li>Producto de <strong>hematología de precisión</strong>, altamente dependiente del biomarcador.</li>
+            <li>La narrativa de marca gira en torno a <strong>selección molecular</strong>, diferenciación clínica y lugar en el algoritmo terapéutico del paciente no candidato a inducción intensiva.</li>
+            <li>Requiere marketing muy conectado con diagnóstico, circuitos hospitalarios y educación científica.</li>
+            <li>Es el activo que más probablemente concentre complejidad estratégica por su naturaleza y necesidades de activación.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Oncaspar (pegaspargasa)</h3>
+          <p><strong>Espacio terapéutico:</strong> leucemia linfoblástica aguda.</p>
+          <ul>
+            <li>Juega más como <strong>componente de backbone terapéutico</strong> que como terapia biomarcada.</li>
+            <li>El valor comercial se apoya en confianza clínica, experiencia de uso, protocolos, seguridad y logística.</li>
+            <li>Permite demostrar comprensión de negocio hospitalario en patologías de menor volumen pero alta especialización.</li>
+            <li>Puede generar discusiones sobre posicionamiento frente a otras asparaginasas y gestión de objeciones clínicas.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="alert"><strong>Lectura del portfolio:</strong> una franquicia pequeña en número de marcas, pero muy estratégica: una presencia de precisión en AML y otra consolidada en ALL, con espacio para desarrollo futuro.</div>
+    </section>
+
+    <section id="portfolio">
+      <h2>5. Mapa del portfolio: lectura rápida de prioridades</h2>
+      <p class="lead">Lo importante es dejar clara la <strong>jerarquía estratégica</strong> del portfolio y qué conversación es más probable con el negocio en el día a día.</p>
+      <div class="metrics-container">
+        <div class="metric-card">
+          <h4>Tibsovo</h4>
+          <p class="metric-card-value">Máxima prioridad</p>
+          <p>Activo más estratégico por complejidad clínica, dependencia del biomarcador y necesidad de posicionamiento fino en AML.</p>
+        </div>
+        <div class="metric-card">
+          <h4>Oncaspar</h4>
+          <p class="metric-card-value">Prioridad táctica</p>
+          <p>Marca importante en ALL, con peso más vinculado a uso protocolizado, experiencia clínica y sostenimiento de relevancia.</p>
+        </div>
+        <div class="metric-card">
+          <h4>BN104 / pipeline</h4>
+          <p class="metric-card-value">Tema futuro</p>
+          <p>Sirve para demostrar visión de franquicia y comprensión de hacia dónde quiere crecer Servier en hematología.</p>
+        </div>
+        <div class="metric-card">
+          <h4>Tipo de discusión esperada</h4>
+          <p class="metric-card-value">Estratégica</p>
+          <p>Lo más probable es que el foco se centre en Tibsovo, competencia, insights de mercado, lanzamientos y trabajo con campo.</p>
+        </div>
+      </div>
+      <div class="alert"><strong>Resumen práctico:</strong> si hubiera que repartir energía, Tibsovo merece la mayor atención, después el enfoque general de la franquicia y finalmente Oncaspar como prueba de comprensión del negocio hospitalario.</div>
+    </section>
+
+    <section id="tibsovo-estrategia">
+      <h2>6. Tibsovo — el activo más estratégico del portfolio hematológico</h2>
+      <p class="lead">Tibsovo es probablemente el producto que mejor prueba cómo se construye una marca en oncohematología hospitalaria.</p>
+      <div class="double-grid">
+        <div class="card">
+          <h3>Qué lo hace especial</h3>
+          <ul>
+            <li>Es una marca basada en <strong>biología molecular clara</strong>.</li>
+            <li>Su éxito depende de que el hospital detecte el paciente adecuado a tiempo.</li>
+            <li>La estrategia comercial no empieza en el material promocional, sino en el <strong>pathway diagnóstico</strong>.</li>
+            <li>Exige alineación entre marketing, medical, acceso, ventas, laboratorio y farmacia hospitalaria.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Implicaciones para un Product Manager</h3>
+          <ul>
+            <li>Definir mensajes de valor realmente diferenciados frente a alternativas del algoritmo no intensivo.</li>
+            <li>Entender barreras locales: testing IDH1, tiempos, centros con mayor volumen, educación científica y adopción por hematólogos.</li>
+            <li>Trabajar con el equipo de campo para identificar qué objeciones frenan la prescripción.</li>
+            <li>Diseñar campañas HCP que no simplifiquen en exceso una decisión clínica compleja.</li>
+          </ul>
+        </div>
+      </div>
+
+      <table class="matrix-table" style="margin-top:16px;">
+        <thead>
+          <tr>
+            <th>Dimensión</th>
+            <th>Qué debe entender el Product Manager</th>
+            <th>Cómo traducirlo a la estrategia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Biomarcador</td>
+            <td>Sin testing, no hay paciente identificado ni oportunidad real.</td>
+            <td>La estrategia de marca empieza antes de la prescripción: empieza en la activación del diagnóstico.</td>
+          </tr>
+          <tr>
+            <td>Competencia</td>
+            <td>No compite solo contra otra molécula, sino contra el estándar práctico y la inercia clínica.</td>
+            <td>Hay que ganar el lugar en el algoritmo, no solo ganar notoriedad.</td>
+          </tr>
+          <tr>
+            <td>Field execution</td>
+            <td>El feedback del equipo de ventas es esencial para detectar barreras reales de adopción.</td>
+            <td>El material más brillante no sirve si no resuelve la objeción concreta del hematólogo.</td>
+          </tr>
+          <tr>
+            <td>Lifecycle</td>
+            <td>Puede evolucionar a nuevas líneas, combinaciones o neoplasias relacionadas con IDH1.</td>
+            <td>No conviene verlo como un producto puntual, sino como una plataforma de valor alrededor de IDH1.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="paciente-tibsovo">
+      <h2>7. Paciente ideal para Tibsovo: perfil, identificación y barreras</h2>
+      <p class="lead">Este es uno de los epígrafes más útiles para onboarding, porque transforma un mensaje genérico en una lectura realmente accionable del mercado.</p>
+      <div class="split">
+        <div class="panel">
+          <h3>Perfil del paciente susceptible de recibir Tibsovo</h3>
+          <div class="insights-container" style="padding:0; grid-template-columns:1fr;">
+            <div class="insight-card">
+              <h4>👤 Situación clínica</h4>
+              <p>Adulto con <strong>LMA de nuevo diagnóstico</strong>, frecuentemente de edad avanzada o con fragilidad / comorbilidades relevantes, en quien la quimioterapia de inducción intensiva no se considera la mejor opción.</p>
+            </div>
+            <div class="insight-card">
+              <h4>🧬 Requisito molecular</h4>
+              <p>Debe presentar una <strong>mutación IDH1 R132</strong> confirmada mediante una técnica diagnóstica válida. Esa confirmación molecular no es un detalle: es la puerta de entrada al segmento terapéutico.</p>
+            </div>
+            <div class="insight-card">
+              <h4>🏥 Entorno ideal</h4>
+              <p>Centro con experiencia en AML, capacidad de testeo molecular relativamente ágil y hematólogos habituados a integrar biomarcadores en la decisión terapéutica.</p>
+            </div>
+            <div class="insight-card">
+              <h4>⏱️ Momento crítico</h4>
+              <p>Debe identificarse pronto, antes de que el paciente quede absorbido por otra ruta terapéutica y antes de que la inercia clínica del centro cierre la ventana de oportunidad.</p>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Cómo se detecta y dónde se pierde el paciente</h3>
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>Cómo se identifica</th>
+                <th>Posibles barreras</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>LMA de novo</td>
+                <td>Estudio hematológico inicial con morfología, citometría y valoración integral del caso.</td>
+                <td>Derivación tardía, diferencias entre circuitos y variabilidad entre centros.</td>
+              </tr>
+              <tr>
+                <td>No elegible para inducción intensiva</td>
+                <td>Valoración de edad, comorbilidades, estado funcional, función orgánica y fragilidad global.</td>
+                <td>No existe un único criterio universal y puede haber heterogeneidad entre hematólogos.</td>
+              </tr>
+              <tr>
+                <td>IDH1 R132 mutada</td>
+                <td>NGS, PCR u otras técnicas moleculares disponibles localmente.</td>
+                <td>Testing no sistemático, tiempos largos, panel incompleto o falta de priorización del biomarcador.</td>
+              </tr>
+              <tr>
+                <td>Paciente tratable a tiempo</td>
+                <td>Integración rápida del resultado molecular en la decisión terapéutica.</td>
+                <td>El resultado llega tarde, el paciente ya inició otra vía o el centro no activa la opción biomarcada.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="double-grid" style="margin-top:18px;">
+        <div class="card">
+          <h3>Qué significa esto para marketing</h3>
+          <ul>
+            <li>Segmentar centros por capacidad diagnóstica y volumen real de AML.</li>
+            <li>Entender si el problema local es awareness, testing, tiempo de respuesta o hábito terapéutico.</li>
+            <li>Crear materiales que ayuden a identificar el perfil correcto y priorizar la mutación IDH1.</li>
+            <li>Trabajar con Medical y con el campo para traducir barreras clínicas en acciones concretas.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Lectura operativa clave</h3>
+          <p>El paciente ideal para Tibsovo no es simplemente un paciente con AML. Es un paciente con AML de nuevo diagnóstico, no candidato a inducción intensiva y con mutación IDH1 confirmada. Si una sola de esas capas no se identifica a tiempo, la oportunidad terapéutica desaparece.</p>
+        </div>
+      </div>
+      <div class="alert"><strong>Lectura útil del IPT:</strong> los pacientes del AGILE eran sobre todo pacientes de edad avanzada, con mediana de 76 años, en su mayoría con ECOG 0-2 y riesgo citogenético intermedio o desfavorable. Esto refuerza que Tibsovo se mueve en una población frágil, de mal pronóstico y con pocas opciones terapéuticas.</div>
+    </section>
+
+    <section id="oncaspar">
+      <h2>8. Oncaspar — posicionamiento, estabilidad y valor en ALL</h2>
+      <p class="lead">Oncaspar requiere menos narrativa biomarcadora y más comprensión del ecosistema clínico de ALL, de la experiencia acumulada y del papel del producto dentro de regímenes combinados.</p>
+      <div class="insights-container">
+        <div class="insight-card">
+          <h4>🩺 Valor clínico-práctico</h4>
+          <p>El peso del producto está ligado a uso protocolizado, confianza de los especialistas y manejo operativo dentro del hospital, no tanto a una narrativa de “innovación disruptiva”.</p>
+        </div>
+        <div class="insight-card">
+          <h4>⚠️ Conversación competitiva</h4>
+          <p>La discusión comercial puede girar en torno a otras asparaginasas, manejo de hipersensibilidad, seguridad, experiencia de uso y disponibilidad terapéutica en determinados pacientes.</p>
+        </div>
+        <div class="insight-card">
+          <h4>🏥 Enfoque hospitalario</h4>
+          <p>Es un buen ejemplo para demostrar que entiendes cómo se mueve una marca en entornos de alta especialización, con decisiones muy concentradas y fuerte influencia de protocolos.</p>
+        </div>
+        <div class="insight-card">
+          <h4>💼 Rol del Product Manager</h4>
+          <p>Más que “crear hype”, el reto es sostener relevancia, asegurar mensajes rigurosos, detectar cambios de práctica clínica y apoyar al equipo de campo con argumentos útiles.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="competencia">
+      <h2>9. Competencia: amenazas reales por marca</h2>
+      <p class="lead">Conviene evitar una respuesta superficial tipo “la competencia son otras farmacéuticas”. En hematología, la amenaza suele estar en el <strong>algoritmo clínico</strong>, el pathway diagnóstico y la velocidad con la que cambian los estándares. En el entorno no intensivo de LMA, el comparador de referencia más fuerte es <strong>venetoclax + HMA</strong>, seguido por <strong>glasdegib + LDAC</strong>, mientras que azacitidina o decitabina en monoterapia siguen formando parte del contexto histórico y práctico de algunos centros.</p>
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Marca / franquicia</th>
+            <th>Amenazas principales</th>
+            <th>Tipo de amenaza</th>
+            <th>Respuesta estratégica que podría priorizarse</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tibsovo</td>
+            <td>Venetoclax + HMA, glasdegib + LDAC, HMA en monoterapia, baja velocidad de testing, baja identificación del paciente biomarcado e inercia clínica de centros.</td>
+            <td>Competencia terapéutica + barrera operativa</td>
+            <td>Fortalecer pathway diagnóstico, segmentar centros, adaptar mensajes por tipo de hospital y generar materiales centrados en objeciones reales.</td>
+          </tr>
+          <tr>
+            <td>Oncaspar</td>
+            <td>Otras asparaginasas, preferencias protocolizadas, sensibilidad a seguridad y manejo de pacientes con eventos relacionados.</td>
+            <td>Competencia de clase + práctica clínica</td>
+            <td>Reforzar argumentos de confianza, soporte a campo, educación médica y lectura fina de protocolos / segmentos de paciente.</td>
+          </tr>
+          <tr>
+            <td>Pipeline hematológico</td>
+            <td>Ritmo de innovación en AML molecular, menin inhibitors y presión competitiva futura por diferenciación clínica.</td>
+            <td>Competencia de innovación</td>
+            <td>Construir desde ya una narrativa de franquicia, no solo de producto aislado, y preparar el terreno para el futuro portafolio.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="split" style="margin-top:18px;">
+        <div class="card">
+          <h3>Cómo leer la competencia de Tibsovo según el IPT</h3>
+          <ul>
+            <li><strong>Venetoclax + azacitidina</strong> es el comparador más serio por tracción clínica en AML no intensiva.</li>
+            <li><strong>Glasdegib + LDAC</strong> existe como alternativa aprobada, aunque con una lógica distinta y datos menos potentes.</li>
+            <li><strong>Azacitidina y decitabina</strong> en monoterapia ya no representan el nuevo estándar más competitivo, pero siguen siendo parte del marco histórico y del algoritmo real en algunos pacientes.</li>
+            <li><strong>No hay comparaciones directas</strong> entre ivosidenib + azacitidina y venetoclax + HMA o glasdegib + LDAC, así que conviene evitar mensajes demasiado absolutos.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Insight útil para la estrategia</h3>
+          <p>El IPT reconoce beneficio claro de Tibsovo frente a azacitidina sola, pero también subraya que frente a <strong>venetoclax + HMA o glasdegib + LDAC</strong> la comparación disponible es indirecta y con incertidumbre. Traducido a estrategia: conviene defender el valor de Tibsovo con firmeza, pero sin sobreactuar ni hablar como si hubiese superiority head-to-head ya demostrada.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h3>Tabla ejecutiva — Tibsovo vs venetoclax + HMA vs glasdegib + LDAC</h3>
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Opción</th>
+              <th>Lugar en el algoritmo</th>
+              <th>Fortaleza principal</th>
+              <th>Limitación principal</th>
+              <th>Mensaje estratégico que deja</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Tibsovo + azacitidina</strong></td>
+              <td>Subgrupo muy definido: <strong>LMA ND con mutación IDH1 R132</strong> en pacientes no candidatos a inducción intensiva.</td>
+              <td><strong>Precisión biológica + evidencia clínica robusta</strong> en un nicho concreto, con beneficio claro en SG, SLE/EFS y respuestas.</td>
+              <td>Depende de <strong>hacer bien el test molecular</strong> y no tiene comparaciones directas frente a venetoclax + HMA.</td>
+              <td>No es una terapia para todos; es una opción de alto valor cuando el paciente correcto está bien identificado.</td>
+            </tr>
+            <tr>
+              <td><strong>Venetoclax + HMA</strong></td>
+              <td>Referencia amplia del entorno <strong>no intensivo</strong> en AML de nuevo diagnóstico, sin requerir selección IDH1.</td>
+              <td><strong>Gran tracción clínica</strong>, altas tasas de respuesta y fuerte presencia en el algoritmo real.</td>
+              <td>Más amplio pero menos específico; en Tibsovo el reto no es copiar esa lógica, sino defender el valor del <strong>subgrupo molecular</strong>.</td>
+              <td>Es el comparador más fuerte del escenario no intensivo, así que Tibsovo debe ganar por precisión, no por masividad.</td>
+            </tr>
+            <tr>
+              <td><strong>Glasdegib + LDAC</strong></td>
+              <td>Alternativa aprobada para AML de novo o secundaria en pacientes no candidatos a inducción estándar.</td>
+              <td><strong>Opción reconocida del algoritmo</strong> y con lectura hospitalaria conocida en algunos centros.</td>
+              <td>Menor fuerza competitiva actual que venetoclax + HMA y lógica menos ligada a biomarcador.</td>
+              <td>Existe como competidor del entorno, pero la conversación estratégica principal hoy está más alrededor de venetoclax + HMA.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert"><strong>Cómo usar esta tabla:</strong> no conviene recitarla entera. Sirve para ubicar a Tibsovo dentro del algoritmo real: <strong>nicho biomarcado, comparador fuerte venetoclax + HMA y valor diferencial basado en precisión, no en volumen</strong>.</div>
+
+      <div class="quote-box" style="margin-top:16px;">
+        <strong>Frase-resumen útil:</strong><br/>
+        “La competencia de Tibsovo no es solo otra marca. Es, sobre todo, venetoclax con HMA como referencia fuerte del entorno no intensivo, y además cualquier punto del pathway donde el paciente no sea testado para IDH1 y entre en otra ruta terapéutica.”
+      </div>
+    </section>
+
+    <section id="pipeline">
+      <h2>10. Pipeline y evolución futura de la franquicia</h2>
+      <p class="lead">Aquí se puede demostrar visión más allá del “current sales plan”. Servier está reforzando su presencia en hematología aguda con una lógica de medicina de precisión, especialmente en leucemias con alteraciones moleculares bien definidas.</p>
+      <ul class="timeline-container">
+        <li>
+          <h4>🧬 Base actual — IDH1 como ancla estratégica</h4>
+          <p>Tibsovo posiciona a Servier en una hematología muy alineada con biomarcadores, decisiones terapéuticas segmentadas y necesidad de educación científica alrededor del testing y la selección del paciente.</p>
+        </li>
+        <li>
+          <h4>🔄 Expansión de lifecycle</h4>
+          <p>La lógica natural de la franquicia es explorar nuevas líneas, combinaciones o neoplasias relacionadas con IDH1, elevando a Tibsovo desde “producto de nicho” a plataforma de valor clínico dentro de tumores / neoplasias IDH1-mutadas.</p>
+        </li>
+        <li>
+          <h4>🚀 Entrada en menin inhibition</h4>
+          <p>BN104 abre una nueva narrativa para Servier en leucemias agudas, especialmente en subgrupos con alteraciones como KMT2A o NPM1. Esto sugiere ambición clara de crecimiento en hematología de precisión.</p>
+        </li>
+        <li>
+          <h4>🏗️ Oportunidad para marketing</h4>
+          <p>Un buen Product Manager puede ayudar a construir desde ya una identidad de franquicia hematológica: no solo campañas puntuales, sino una historia coherente de liderazgo científico y foco en unmet need.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="estudios-clinicos">
+      <h2>11. Ensayos clínicos y evidencia clave</h2>
+      <p class="lead">No hace falta recitar todos los detalles estadísticos, pero sí conocer los estudios que realmente construyen la historia clínica de la marca, sus mensajes clave y qué insight de marketing deja cada uno. El IPT de la AEMPS ayuda mucho porque no solo resume resultados, sino que también te da lectura crítica y contexto frente a otras opciones.</p>
+      <div class="card" id="estudio-agile">
+        <h3>Tibsovo — AGILE (fase 3, pivotal)</h3>
+        <div class="study-meta">
+          <span class="study-tag">Endpoint principal: SLE/EFS</span>
+          <span class="study-tag">HR 0,33</span>
+          <span class="study-tag">SG 24,0 vs 7,9 m</span>
+          <span class="study-tag">Actualización SG 29,3 vs 7,9 m</span>
+          <span class="study-tag">RC 47,2% vs 14,9%</span>
+          <span class="study-tag">TRO 62,5% vs 18,9%</span>
+        </div>
+        <p>Es el ensayo clave para la indicación europea actual de Tibsovo en combinación con azacitidina. Incluyó pacientes con <strong>LMA IDH1 mutada de nuevo diagnóstico</strong> no candidatos a quimioterapia intensiva. El gran valor del estudio es que convierte a Tibsovo en una opción no solo biológicamente lógica, sino <strong>clínicamente robusta</strong> en primera línea no intensiva.</p>
+        <p>Según el IPT, en la población ITT se observó una mejora clínicamente relevante en <strong>supervivencia libre de eventos</strong> con <strong>HR 0,33</strong>. La <strong>mediana de SG fue 24,0 meses frente a 7,9 meses</strong>, y la actualización posterior confirmó un beneficio aún más llamativo con <strong>29,3 frente a 7,9 meses</strong>. También hubo claras diferencias en <strong>RC</strong>, <strong>RC + RCh</strong> y <strong>TRO</strong>, todas a favor de ivosidenib + azacitidina.</p>
+        <p>Además, el IPT incorpora un dato muy útil para dimensionar el impacto: el <strong>NNT</strong> fue de <strong>5</strong> para SLE, <strong>4</strong> para SG, <strong>3</strong> para RC y <strong>2</strong> para TRO. No hace falta memorizar todos, pero sí ayuda a explicar que el beneficio no es marginal. También se observaron señales de apoyo en <strong>fatiga, estado general y menor necesidad de transfusión</strong>, aunque estas variables se consideran más de soporte.</p>
+        <p>La lectura madura no es solo decir que el estudio fue positivo. También conviene saber que el IPT recuerda dos limitaciones importantes: la variable principal cambió de <strong>SG a SLE</strong> durante el desarrollo y no existen comparaciones directas frente a <strong>venetoclax + HMA</strong> o <strong>glasdegib + LDAC</strong>. Aun así, la conclusión es que el beneficio clínico es relevante en una población de mal pronóstico y con pocas opciones.</p>
+        <a class="study-link" href="https://ashpublications.org/bloodadvances/article/9/20/5177/541159/Long-term-follow-up-of-the-phase-3-AGILE-study-of">Ver seguimiento largo del ensayo</a><br/>
+        <a class="study-link" href="https://www.nejm.org/doi/full/10.1056/NEJMoa2117344">Ver publicación pivotal original</a>
+      </div>
+      <div class="card" style="margin-top:16px;" id="estudio-ag120">
+        <h3>Tibsovo — AG120-C-001 / fase 1 en AML IDH1 mutada</h3>
+        <div class="study-meta">
+          <span class="study-tag">Endpoint clave: seguridad</span>
+          <span class="study-tag">Actividad en R/R AML</span>
+          <span class="study-tag">Dosis: 500 mg</span>
+          <span class="study-tag">Base del lifecycle</span>
+        </div>
+        <p>Este estudio fue fundamental para demostrar la actividad clínica inicial de ivosidenib en <strong>AML avanzada, especialmente recaída o refractaria</strong>, y ayudó a establecer la dosis de 500 mg diarios. Más allá de la eficacia, fue importante porque confirmó que el mecanismo de inhibición de IDH1 se traducía en diferenciación celular y remisiones duraderas en un subgrupo molecular definido. También puso sobre la mesa riesgos y consideraciones prácticas como el síndrome de diferenciación y la prolongación de QT, que hoy forman parte de la conversación clínica real alrededor del producto. Desde el punto de vista estratégico, este estudio sirve para explicar el origen de la marca: primero se validó el mecanismo y la actividad en enfermedad avanzada, y después se construyó la expansión hacia escenarios más tempranos.</p>
+        <a class="study-link" href="https://pubmed.ncbi.nlm.nih.gov/29860938/">Ver ensayo completo</a>
+      </div>
+      <div class="card" style="margin-top:16px;" id="estudio-ndaml">
+        <h3>Tibsovo — cohorte temprana en LMA de nuevo diagnóstico no apta para terapia estándar</h3>
+        <div class="study-meta">
+          <span class="study-tag">Endpoint clave: señal en 1L</span>
+          <span class="study-tag">No aptos para inducción</span>
+          <span class="study-tag">Puente hacia AGILE</span>
+          <span class="study-tag">Evolución estratégica</span>
+        </div>
+        <p>Los datos tempranos de ivosidenib en pacientes con <strong>LMA de nuevo diagnóstico no candidatos a terapia estándar</strong> ayudaron a demostrar que la diana IDH1 tenía relevancia también fuera del escenario recaída/refractario. Esta evidencia fue importante porque anticipó la oportunidad de mover la molécula a líneas más tempranas y a pacientes no aptos para inducción intensiva. Desde una óptica de marca, aportó un insight decisivo: el valor de Tibsovo no estaba limitado al rescate, sino que podía tener un papel más transformador en primera línea de un segmento molecularmente definido.</p>
+        <a class="study-link" href="https://ashpublications.org/bloodadvances/article/8/15/4209/515789/Final-phase-1-substudy-results-of-ivosidenib-for">Ver ensayo completo</a>
+      </div>
+      <div class="card" style="margin-top:16px;" id="estudio-pyramidh">
+        <h3>Tibsovo — expansión clínica: MDS IDH1 mutada y nuevas líneas</h3>
+        <div class="study-meta">
+          <span class="study-tag">Pipeline</span>
+          <span class="study-tag">PyramIDH</span>
+          <span class="study-tag">Expansión de franquicia</span>
+          <span class="study-tag">IDH1 platform</span>
+        </div>
+        <p>La historia clínica de Tibsovo no termina en AGILE. Servier sigue expandiendo la franquicia con estudios como <strong>PyramIDH</strong> en <strong>MDS con mutación IDH1</strong> y con análisis y desarrollos en otras poblaciones hematológicas. Esto es importante porque indica que la compañía no concibe Tibsovo como un único activo de nicho, sino como una plataforma alrededor de la inhibición de IDH1. Desde la óptica del rol, este tipo de información ayuda a entender que no solo importa la indicación aprobada, sino también cómo la evidencia futura puede ampliar el valor de la franquicia.</p>
+        <a class="study-link" href="https://servier.mediaroom.com/2025-01-09-Servier-Announces-Expansion-of-its-Tibsovo-ivosidenib-Development-Program-Investigating-its-Safety-and-Efficacy-in-Patients-Living-with-IDH1-Mutated-Cancers-in-Both-Hematological-Malignancies-and-Solid-Tumors">Ver información del programa</a>
+      </div>
+      <div class="card" style="margin-top:16px;" id="estudio-oncaspar">
+        <h3>Oncaspar — evidencia clínica clave y lectura práctica</h3>
+        <div class="study-meta">
+          <span class="study-tag">LLA combinada</span>
+          <span class="study-tag">IM o IV</span>
+          <span class="study-tag">Cada 14 días</span>
+          <span class="study-tag">Backbone terapéutico</span>
+        </div>
+        <p>La historia clínica de Oncaspar se apoya en su papel como <strong>pegaspargasa dentro del tratamiento combinado de la LLA</strong>, tanto en pediatría como en adultos. Más que un único ensayo icónico, su fortaleza procede del conjunto de evidencia que consolidó a la pegaspargasa como una formulación útil de asparaginasa, con una farmacocinética más prolongada y una menor frecuencia de administración que formulaciones no pegiladas. El insight clave para el rol es que su valor no se comunica desde una narrativa de biomarcador o medicina de precisión, sino desde su integración en protocolos, confianza clínica y experiencia acumulada.</p>
+        <a class="study-link" href="https://cima.aemps.es/cima/dochtml/ft/1151070001/FichaTecnica_1151070001.html">Ver ficha / evidencia regulatoria</a>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <h3>Lectura crítica del IPT que orienta mejor la priorización</h3>
+        <a class="study-link" href="https://www.aemps.gob.es/medicamentosUsoHumano/informesPublicos/docs/IPT-247-Tibsovo-ivosidenib.pdf">Ver IPT oficial de la AEMPS</a>
+        <ul>
+          <li>El <strong>beneficio clínico</strong> se considera demostrado, especialmente por SG, tasas de respuesta y durabilidad.</li>
+          <li>La población del estudio era <strong>muy específica</strong>: edad avanzada, ECOG 0-2, y no candidata a inducción intensiva.</li>
+          <li>Hay <strong>incertidumbre comparativa</strong> frente a venetoclax + HMA y glasdegib + LDAC porque no existen head-to-head.</li>
+          <li>La seguridad exige una conversación seria sobre <strong>QT prolongado</strong> y <strong>síndrome de diferenciación</strong>.</li>
+          <li>El valor diferencial de Tibsovo está íntimamente unido a <strong>hacer bien el test de IDH1</strong> y a no perder al paciente en el recorrido diagnóstico.</li>
+        </ul>
+      </div>
+      <div class="alert"><strong>Qué conviene retener:</strong> AGILE sustenta Tibsovo hoy; el fase 1 en AML R/R explica de dónde viene; los datos tempranos en primera línea muestran cómo se abrió la oportunidad; el programa de expansión confirma ambición de franquicia; el IPT refuerza el valor clínico de la marca pero también recuerda sus límites comparativos; y Oncaspar exige una lógica comercial distinta, más protocolaria y hospitalaria.</div>
+    </section>
+
+    <section id="cima">
+      <h2>12. Ficha práctica de producto basada en CIMA</h2>
+      <p class="lead">Este bloque es especialmente útil porque te permite hablar con soltura sobre aspectos prácticos del medicamento: dosis, vía de administración, monitorización y perfil de seguridad.</p>
+      <div class="split">
+        <div class="card">
+          <h3>Tibsovo — resumen práctico CIMA + claves del IPT</h3>
+          <a class="study-link" href="https://www.aemps.gob.es/medicamentosUsoHumano/informesPublicos/docs/IPT-247-Tibsovo-ivosidenib.pdf">Consultar IPT oficial de la AEMPS</a>
+          <div class="study-meta">
+            <span class="study-tag">500 mg VO QD</span>
+            <span class="study-tag">+ azacitidina</span>
+            <span class="study-tag">ECG / QTc</span>
+            <span class="study-tag">Síndrome de diferenciación</span>
+          </div>
+          <p><strong>Presentación:</strong> comprimidos recubiertos con película de 250 mg. <strong>Dosis en LMA:</strong> 500 mg por vía oral una vez al día, es decir, 2 comprimidos, iniciándose el día 1 del ciclo 1 junto con azacitidina 75 mg/m² IV o SC los días 1 a 7 de cada ciclo de 28 días. Se recomienda tratar al menos 6 ciclos y continuar hasta progresión o intolerancia.</p>
+          <p><strong>Aspectos prácticos:</strong> antes de iniciar tratamiento debe confirmarse la mutación IDH1 R132 y realizar ECG; conviene vigilar especialmente prolongación del QTc e interacciones con fármacos que prolongan QT o inhibidores de CYP3A4. Un punto muy útil para el trabajo diario es: <strong>ECG antes de empezar, semanal durante las 3 primeras semanas y luego mensual</strong> si el QTc se mantiene controlado. Además, conviene seguir hemograma y bioquímica de forma estrecha al inicio.</p>
+          <p><strong>Reacciones adversas frecuentes en LMA ND + azacitidina:</strong> vómitos, neutropenia, trombocitopenia, prolongación del QT e insomnio. <strong>Eventos graves o de especial vigilancia:</strong> síndrome de diferenciación, prolongación del QT, toxicidades hematológicas y sangrado.</p>
+          <a class="study-link" href="https://cima.aemps.es/cima/dochtml/ft/1231728001/FT_1231728001.html">Ver ficha completa en CIMA</a>
+        </div>
+        <div class="card">
+          <h3>Oncaspar — resumen práctico CIMA</h3>
+          <div class="study-meta">
+            <span class="study-tag">2.500 U/m² ≤21 años</span>
+            <span class="study-tag">2.000 U/m² &gt;21 años</span>
+            <span class="study-tag">IM o IV</span>
+            <span class="study-tag">Pancreatitis / trombosis</span>
+          </div>
+          <p><strong>Presentación:</strong> solución inyectable y para perfusión de 750 U/ml. <strong>Indicación:</strong> parte del tratamiento antineoplásico combinado de la LLA en pacientes pediátricos y adultos. <strong>Dosis:</strong> en pacientes pediátricos y adultos ≤21 años, 2.500 U/m² cada 14 días; en adultos &gt;21 años, 2.000 U/m² cada 14 días. Puede administrarse por vía intramuscular o por perfusión intravenosa.</p>
+          <p><strong>Aspectos prácticos:</strong> debe administrarse en entorno hospitalario con experiencia y con seguimiento estrecho; se recomienda monitorizar actividad asparaginasa sérica antes de la siguiente administración. <strong>Riesgos y tolerabilidad:</strong> la conversación clínica gira sobre todo en torno a hipersensibilidad, pancreatitis, trombosis, hepatotoxicidad y alteraciones de coagulación.</p>
+          <a class="study-link" href="https://cima.aemps.es/cima/dochtml/ft/1151070001/FichaTecnica_1151070001.html">Ver ficha completa en CIMA</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="posicionamiento-servier">
+      <h2>13. Qué diría yo sobre Servier como compañía en este segmento</h2>
+      <div class="three-grid">
+        <div class="card">
+          <h3>Foco</h3>
+          <p>Servier no intenta cubrir toda la hematología. Su estilo es entrar en espacios más concretos donde pueda ofrecer diferenciación científica y valor claro para pacientes con alta necesidad no cubierta.</p>
+        </div>
+        <div class="card">
+          <h3>Coherencia</h3>
+          <p>El portfolio y el pipeline cuentan una historia consistente: precisión, nichos bien definidos, rare cancers y expansión cuidadosa de franquicias con racional biológico fuerte.</p>
+        </div>
+        <div class="card">
+          <h3>Exigencia para marketing</h3>
+          <p>Eso hace que el marketing tenga que ser más sofisticado: menos comunicación masiva, más lectura de centros, insights clínicos y capacidad de traducir ciencia a relevancia local.</p>
+        </div>
+      </div>
+      <div class="alert"><strong>Mensaje elegante:</strong> Servier tiene un footprint en hematología más selectivo y estratégico. Eso obliga al marketing a ser muy fino, muy clínico y muy conectado al terreno.</div>
+    </section>
+
+    <section id="encaje-vacante">
+      <h2>14. Cómo enfocar tu aportación al rol</h2>
+      <div class="split">
+        <div class="card">
+          <h3>Lo que conviene priorizar sí o sí</h3>
+          <ul>
+            <li>Entender a fondo el entorno hospitalario y la lógica específica de oncohematología.</li>
+            <li>Trabajar de forma cross-functional con Medical, Access, Sales y analítica.</li>
+            <li>Convertir datos e insights en decisiones de marca.</li>
+            <li>Construir materiales, narrativas y planes HCP sólidos.</li>
+            <li>Tener visión de lanzamientos, market shaping o lifecycle management.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Cómo operar de forma más senior</h3>
+          <ul>
+            <li>No pensar solo en “campañas”, sino en <strong>decisiones de negocio</strong>.</li>
+            <li>No limitarse a “trabajar con ventas”, sino integrar feedback de campo en la estrategia.</li>
+            <li>No presentar marketing como creatividad, sino como una función que alinea insights, ciencia, segmentación, ejecución y forecast.</li>
+            <li>Mostrar capacidad para priorizar: dónde invertir, qué medir y qué cambiar cuando una iniciativa no funciona.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan-306090">
+      <h2>15. Plan 30-60-90 días para sonar muy preparado</h2>
+      <ul class="timeline-container">
+        <li>
+          <h4>📍 Primeros 30 días — escuchar y mapear</h4>
+          <p>Revisión del portfolio, materiales, KPIs, presupuesto, CRM y planes actuales. Reuniones con ventas, medical, market access, field manager y global. Mapa inicial de centros, barreras y principales dinámicas competitivas.</p>
+        </li>
+        <li>
+          <h4>🧭 60 días — priorizar e intervenir</h4>
+          <p>Identificación de quick wins: ajustes de mensajes, optimización de materiales HCP, mejora del enfoque por segmento de centro y propuesta de acciones concretas para reforzar ejecución o adopción.</p>
+        </li>
+        <li>
+          <h4>🚀 90 días — consolidar un plan de crecimiento</h4>
+          <p>Presentación de una hoja de ruta con prioridades comerciales, necesidades de inversión, plan promocional refinado, integración de insights de campo y propuesta de métricas claras para seguir impacto y aprendizaje.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="cierre">
+      <h2>16. Tu cierre ideal del rol</h2>
+      <div class="quote-box">
+        “Lo que más valor aporta esta posición es que combina ciencia, estrategia y ejecución real en mercado hospitalario. En un portfolio como el de Servier, el valor del Product Manager no está solo en hacer materiales, sino en entender profundamente el recorrido del paciente, traducir insights del terreno en decisiones de marca y ayudar a que una innovación encuentre su lugar real en la práctica clínica.”
+      </div>
+    </section>
+
+    <p class="footer-note">Documento elaborado como herramienta de onboarding. Integra la job description compartida y una lectura estratégica del portfolio hematológico visible de Servier, con foco en cómo estructurar una visión sólida, madura y orientada a negocio para la posición de Product Manager Oncohematología.</p>
+  </div>
+</body>
+</html>
+``
